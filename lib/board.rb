@@ -13,13 +13,13 @@ class Board
     puts " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
   end
 
-  def input_to_index(input)
-    index = input.to_i - 1
-  end
+  # def input_to_index(input)
+  #   input.to_i - 1
+  # end
+
 
   def position(index)
-    true_index = input_to_index(index)
-    @cells[true_index]
+    @cells[index.to_i - 1]
   end
 
   def update(index, player)
@@ -32,13 +32,13 @@ class Board
   end
 
   def taken?(index)
-    true_index = input_to_index(index)
-    !(@cells[true_index] == " " || @cells[true_index] == "" || @cells[true_index] == nil)
+  #  true_index = input_to_index(index)
+    !(position(index) == " " || (position(index) == "" || (position(index) == nil)
   end
 
   def valid_move?(index)
-    true_index = input_to_index(index)
-    !taken?(index) && true_index >= 0 && true_index <= 8
+  #  true_index = input_to_index(index)
+    !taken?(index) && index >= 0 && index <= 8
   end
 
   def full?
