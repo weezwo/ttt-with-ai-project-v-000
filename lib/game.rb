@@ -1,5 +1,3 @@
-require 'Pry'
-
 class Game
   attr_accessor :board, :player_1, :player_2
   WIN_COMBINATIONS = [
@@ -52,10 +50,9 @@ class Game
     #index = input_to_index(input)
     move = player.move(@board).to_i
     if board.valid_move?(move)
-      board.cells[move - 1] = player.token
+      board.update(move, player)
       puts "\n"
       puts "#{board.display}\n"
-      binding.pry
     else
       puts "Invalid move. Try again. \n"
       turn

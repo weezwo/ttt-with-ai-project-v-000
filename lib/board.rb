@@ -23,8 +23,7 @@ class Board
   end
 
   def update(index, player)
-    true_index = input_to_index(index)
-    @cells[true_index] = player.token
+    @cells[index.to_i - 1] = player.token
   end
 
   def reset!
@@ -33,7 +32,7 @@ class Board
 
   def taken?(index)
   #  true_index = input_to_index(index)
-    !(position(index) == " " || (position(index) == "" || (position(index) == nil)
+    !position(index) == " " || position(index) == "" || position(index) == nil
   end
 
   def valid_move?(index)
